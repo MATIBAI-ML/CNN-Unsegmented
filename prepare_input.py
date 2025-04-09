@@ -22,7 +22,9 @@ def prepare(inDir, outFile):
         in_path = os.path.join(inDir, f)
         
         filename = os.path.splitext(f)[0]
+    
         pieces = filename.split('_')
+        
         name = pieces[1]
         label = int(pieces[2]) # 1 tbc, 0 nothing
 
@@ -48,6 +50,8 @@ def prepare(inDir, outFile):
 
     # Add dummy channel layer
     images = images.reshape((images.shape[0], images.shape[1], images.shape[2], 1))
+    
+    print(name_list)
 
     # Write data
     np.save(outFile + '.npy', images)
